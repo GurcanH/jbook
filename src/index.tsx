@@ -39,6 +39,7 @@ const App = () => {
   return (
     <div>
       <textarea
+        style={{ width: '500px', height: '300px' }}
         value={input}
         onChange={(e) => setInput(e.target.value)}
       ></textarea>
