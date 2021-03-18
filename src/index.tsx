@@ -1,9 +1,9 @@
 import * as esbuild from 'esbuild-wasm';
 import { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
-
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 import { fetchPlugin } from './plugins/fetch-plugin';
+
 const App = () => {
   const ref = useRef<any>();
   const [input, setInput] = useState('');
@@ -15,10 +15,10 @@ const App = () => {
       wasmURL: '/esbuild.wasm',
     });
   };
-
   useEffect(() => {
     startService();
   }, []);
+
   const onClick = async () => {
     if (!ref.current) {
       return;
@@ -34,22 +34,24 @@ const App = () => {
         global: 'window',
       },
     });
-    console.log(result);
+
+    // console.log(result);
+
     setCode(result.outputFiles[0].text);
   };
+
   return (
     <div>
       <textarea
-        style={{ width: '500px', height: '300px' }}
         value={input}
         onChange={(e) => setInput(e.target.value)}
       ></textarea>
       <div>
         <button onClick={onClick}>Submit</button>
-        <pre>{code}</pre>
       </div>
+      <pre>{code}</pre>
     </div>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.querySelector('#root'));
