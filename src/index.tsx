@@ -64,7 +64,7 @@ const App = () => {
   `;
   return (
     <div>
-      <CodeEditor />
+      <CodeEditor initialValue="import React from 'react';" />
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
