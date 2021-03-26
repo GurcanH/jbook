@@ -3,7 +3,6 @@ import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 import { fetchPlugin } from './plugins/fetch-plugin';
 
 let service: esbuild.Service;
-
 const bundle = async (rawCode: string) => {
   if (!service) {
     service = await esbuild.startService({
@@ -22,6 +21,8 @@ const bundle = async (rawCode: string) => {
         'process.env.NODE_ENV': '"production"',
         global: 'window',
       },
+      jsxFactory: '_React.createElement',
+      jsxFragment: '_React.Fragment',
     });
 
     return {
